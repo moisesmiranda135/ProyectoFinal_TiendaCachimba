@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+	<title>ShishaSevilla</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" href="../static/style.css" th:href="@{/style.css}" type="text/css">
+
+</head>
+
+<body>
+
+	<nav class="navbar navbar-inverse navbar-fixed-top">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+					<span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="index.html" th:href="@{/}">ShishaSevilla</a>
+			</div>
+			<div class="collapse navbar-collapse" id="myNavbar">
+				<ul class="nav navbar-nav">
+					<li class="dropdown"><a class="dropdown-toggle" data-toggle="dropdown" href="#">Agregar <span
+								class="caret"></span></a>
+						<ul class="dropdown-menu">
+							<li><a href="agregar-cachimba.html" th:href="@{/nueva}">Cachimba</a></li>
+							<li><a href="agregar-marca.html" th:href="@{/nuevaMarca}">Marca</a></li>
+						</ul>
+					</li>
+
+
+					<li><a href="#">Otros</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+
+
+
+	<div class="jumbotron jumbotron-fluid">
+		<div class="container">
+			<div class="col-sm-8">
+				<h1>ShishaSevilla</h1>
+			</div>
+		</div>
+	</div>
+
+<div class="container-fluid">
+
+
+
+
+
+
+<div class="col-sm-2">
+
+
+
+	<!-- Header -->
+	<div class="plantilla container-fluid text-center">
+
+		<div class="col-sm-12">
+			<h3>Marcas</h3>
+			<div class="nav nav-sidebar">
+				<a id="todas" href="#" th:href="@{/}">Todas</a>
+				<div class="row"  th:each="marca : ${marcas}">
+					<div class=" mx-auto col-sm-8 nav nav-sidebar">
+
+						<a href="#" th:href="@{/?(idMarca=${marca.id})}" th:text="${marca.nombre}">marca </a>
+					</div>
+
+					<div class="mx-auto col-sm-1 nav nav-sidebar"> <a class="bi bi-trash"
+							th:href="@{/borrarMarca/{id}(id=${marca.id})}"></a>
+					</div>
+					<div class="col-sm-1 nav nav-sidebar">
+						<a class="bi bi-pencil-square" th:href="@{/editar/marca/{id}(id=${marca.id})}"></a>
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+</div>
+
+	<!--Plantilla para pintar cachimbas-->
+	<div class="col-sm-10">
+	<div class="container-fluid plantilla">
+		<div class="row">
+		<div class="col-sm-12">
+			<div class="row">
+				<div class="col-sm-2 espacio" th:each="cachimba:${cachimbas}">
+					<div class="card" style="width: 250px">
+						<img class="card-img-top img-thumbnail"
+							src="https://user-images.githubusercontent.com/5169035/44525654-f0a50880-a6e1-11e8-8522-0f00aa811a6b.png"
+							th:src="${#strings.isEmpty(cachimba.imagen)} ? 'https://user-images.githubusercontent.com/5169035/44525654-f0a50880-a6e1-11e8-8522-0f00aa811a6b.png' : ${cachimba.imagen}"
+							alt="Card image" style="width: 100%">
+						<div class="card-body">
+							<h4 class="card-title" th:text="${cachimba.nombre}"></h4>
+							<p class="card-text" th:text="${cachimba.marca.nombre}"></p>
+							<h4 class="card-title" th:text="${cachimba.precio}"> €</h4>
+							<a href="#" th:href="@{/borrar/{id}(id=${cachimba.id})}" class="btn btn-danger">Eliminar</a>
+
+							<a href="error404.html" class="btn btn-primary">Más Información</a>
+
+						</div>
+						<br> <a th:href="@{/editarCachimba/{id}(id=${cachimba.id})}" class="btn btn-warning">Editar
+							datos</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	</div>
+	</div>
+
+	<br>
+
+
+
+</div>
+
+
+
+
+	<!-- Footer -->
+
+	 
+	 <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
+		© 2021 Copyright:
+		<a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+	  </div>
+	 
+	</footer>
+	<!-- Footer -->
+</body>
+
+</html>
