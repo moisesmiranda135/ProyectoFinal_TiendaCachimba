@@ -44,7 +44,7 @@
   <div class="jumbotron jumbotron-fluid">
     <div class="container">
       <div class="col-sm-8">
-        <h1>Descripción de la Cachimba</h1>
+        <h1>Agregar / Editar  Cachimba</h1>
       </div>
     </div>
   </div>
@@ -55,36 +55,141 @@
   <div class="container text-center">
 
     <div class="row">
-    
       <div class="col-sm-12">
-      	
-      	<div class="col-sm-4">
-      		<p> Nombre </p>
-      	</div>
-      	
-      	<div class="col-sm-4">
-      		<p> Color </p>
-      	</div>
-      	
-      	<div class="col-sm-4">
-      		<p> Marca </p>
-      	</div>
-      	
+        <form method="POST" action="#" th:action="@{/nueva/submit}" th:object="${cachimba}" class="credit-card-div">
+          <input type="hidden" th:field="*{id}" id="id" />
+          <div class="panel panel-default">
+            <div class="panel-heading">
+
+              <div class="row ">
+                <div class="col-sm-6">
+
+                  <div class="row ">
+
+
+
+                    <div class="col-sm-6">
+                      <p>Nombre</p>
+                      <p class="cachimba-nombre" th:text=${cachimba.nombre}>Nombre</p>
+                    </div>
+
+                    <div class="col-sm-6">
+                      <p>Marca</p>
+                      <p class="cachimba-marca" th:text=${cachimba.marca.nombre}>Nombre de Marca</p>
+                    </div>
+                  </div>
+
+                  <div class="row">
+                    <div class="col-sm-4">
+                      <p>Color</p>
+                      <p class="cachimba-color" th:text=${cachimba.color}>Color</p>
+                    </div>
+
+
+                    <div class="col-sm-4">
+                      <p>Altura (en centímetros)</p>
+                      <p class="cachimba-altura" th:text=${cachimba.altura}>Altura</p>
+                    </div>
+
+                    <div class="col-sm-4">
+                      <p>Conexiones para manguera</p>
+                      <p class="cachimba-numConexManguera" th:text=${cachimba.numConexManguera}>Número de conexiones para manguera</p>
+                    </div>
+
+                  </div>
+
+
+                  <div class="row ">
+                    <div class="col-sm-12">
+                      <p>Material de Fabricación</p>
+                      <p class="cachimba-matFabricacion" th:text=${cachimba.materialFabricacion}>Material de Fabricación</p>
+                    </div>
+                  </div>
+
+
+                  <div class="row ">
+
+                    <div class="col-sm-12">
+                      <span class="help-block text-muted small-font">URL imagen</span>
+                      <input type="url" class="form-control" id="imagen" placeholder="http://..." th:field="*{imagen}">
+                    </div>
+
+                  </div>
+
+
+
+                  <div class="row ">
+                    <div class="col-sm-12">
+                      <span class="help-block text-muted small-font">Descripción</span>
+                      <textarea name="descripcion" cols="73" rows="10" autofocus required
+                        th:field="*{descripcion}">Escriba la descripción del producto</textarea>
+                    </div>
+                  </div>
+
+
+
+                </div>
+              
+
+              
+                <div class="col-sm-6">
+
+                  <div class="row ">
+                    <div class="col-sm-6">
+                      <img
+                        src="https://user-images.githubusercontent.com/5169035/44525654-f0a50880-a6e1-11e8-8522-0f00aa811a6b.png"
+                        th:src="${#strings.isEmpty(cachimba.imagen)} ? 'https://user-images.githubusercontent.com/5169035/44525654-f0a50880-a6e1-11e8-8522-0f00aa811a6b.png' : ${cachimba.imagen}"
+                        class="img-rounded" />
+                    </div>
+                  </div>
+
+                  <div class="col-sm-12">
+
+                    <div class="row ">
+                      <div class="row ">
+
+                        <div class="col-sm-9">
+
+                        </div>
+
+                        <div class="col-sm-3">
+                          <span  class="help-block text-muted small-font"> Precio</span>
+                          <input id="precio" type="text" class="form-control" placeholder="€" th:field="*{precio}" />
+                        </div>
+                      </div>
+                      <br>
+
+
+
+                      <div class="row ">
+                        <div class="col-sm-6">
+                        </div>
+                        <div class="col-sm-3 pad-adjust ">
+                        
+                          <a class="btn btn-danger btn-block" th:href="@{/borrar/{id}(id=${cachimba.id})}" >Borrar</a>
+                          
+                        </div>
+
+                        <div class="col-sm-3 pad-adjust">
+                          <input type="submit" th:value="${cachimba.id} ? 'Editar' :'Agregar'"
+                            class="btn btn-success btn-block" />
+
+                        </div>
+                      </div>
+
+                    </div>
+                  </div>
+
+                </div>
+              
+
+            </div>
+          </div>
+        </form>
       </div>
-     
-    <div class="row">
-    
-      <div class="col-sm-12">
-      
-      
-      
-      </div>
-      
     </div>
-    
   </div>
- 
- </div> 
+  
   <!-- Footer -->
 
 	 
