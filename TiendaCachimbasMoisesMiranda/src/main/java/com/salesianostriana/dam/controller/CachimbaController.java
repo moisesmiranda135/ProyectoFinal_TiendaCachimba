@@ -14,6 +14,11 @@ import com.salesianostriana.dam.servicios.CachimbaServicio;
 import com.salesianostriana.dam.servicios.MarcaServicio;
 
 @Controller
+/**
+ * Esta clase controller funciona exactamente igual que la clase MarcaController,
+ * tiene los mismo métodos de borrar,editar y agregar
+ * y funcionan exactamente igual cambiando que en ves de una marca lo realiza con el objeto cachimba
+ */
 public class CachimbaController {
 	
 	@Autowired

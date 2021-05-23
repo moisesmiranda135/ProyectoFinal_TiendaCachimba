@@ -15,6 +15,11 @@ import lombok.Setter;
 @NoArgsConstructor
 
 @Entity
+/**
+ * Esta es la clase pojo cachimba donde guardamos los atributos de dicha clase.
+ * @author Moi
+ *
+ */
 public class Cachimba {
 	
 	@Id @GeneratedValue

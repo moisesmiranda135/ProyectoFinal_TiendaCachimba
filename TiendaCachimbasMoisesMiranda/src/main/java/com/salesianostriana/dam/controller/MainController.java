@@ -23,6 +23,11 @@ public class MainController {
 	
 	
 	@GetMapping("/")
+	/**
+	 * Este método sirve para  poder mostrar las cachimbas y el listado de marcas de forma dinámica en
+	 * nuestro index.html
+	 *
+	 */
 	public String todasLasCachimbas(@RequestParam(name="idMarca", required=false) Long idMarca, Model model) {		
 		
 	
@@ -31,7 +36,9 @@ public class MainController {
 		List<Cachimba> cachimbas;
 	
 		
-		
+		/*Si la marca no es nula, obtenemos todas las cachimbas, si es nula obtenemos todos los de 
+		 * la marca con ese id, el llamado idmarca. 
+		 */
 		if (idMarca == null) {
 			cachimbas = caServicio.findAll();
 		} else {			
@@ -43,13 +50,20 @@ public class MainController {
 		return "index";
 	}
 	
-	//Método para mostrar detalles
+	/**
+	 * Este método sirve para mostrar los detalles de una cachimba.
+	 *Al hacer click sobre el cachimba, se recoge el id y es el que tenemos en la ruta de getMapping
+	 * se pasa el método mediante @PathVariable ("id") Long id
+	 */
 	@GetMapping("/cachimba/{id}")
 	public String MostrarDetalles(@PathVariable("id") Long id, Model model) {
 		
 		
 		Cachimba c = caServicio.findById(id);
 		
+		/*Si la cachimba no es null se añade al modelo y mostramos la página de la descripción descripcion.html
+		*Si no existe, volvemos al index con redirect:/ que es el controlador que hemos nombrado anteriormente
+		*/
 		if (c != null) {
 			model.addAttribute("cachimba", c);
 			return "descripcion";

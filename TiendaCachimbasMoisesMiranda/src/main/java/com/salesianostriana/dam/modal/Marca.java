@@ -21,6 +21,11 @@ import lombok.ToString;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+/**
+ * Esta es la clase pojo marca donde guardamos los atributos de dicha clase.
+ * @author Moi
+ *
+ */
 public class Marca {
 	
 	@Id @GeneratedValue(strategy=GenerationType.AUTO)
